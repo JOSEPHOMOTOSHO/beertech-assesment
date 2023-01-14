@@ -2,7 +2,7 @@ import amqp from 'amqplib/callback_api'
 import { orderCreationDto } from '../types'
 
 const publishOrder: (arg0: any) => any = (order: orderCreationDto) => {
-  amqp.connect('amqp://localhost', function (error0, connection) {
+  amqp.connect('amqp://localhost:5672', function (error0, connection) {
     if (error0) throw error0
 
     connection.createChannel(function (error1, channel) {

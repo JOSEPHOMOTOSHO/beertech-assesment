@@ -1,13 +1,12 @@
-import http from "http";
 import express, { NextFunction, Request, Response } from "express";
+import http from "http";
 import morgan from "morgan";
-import customerRoutes from "./routes/customerRoutes";
-import orderRoutes from "./routes/orderRoutes";
+import orderConsumer from "./utils/consumer";
 import sequelize from "./config/db";
 
 const app = express();
 
-const port = 3001;
+const port = 3002;
 
 app.use(morgan("dev"));
 
@@ -19,10 +18,6 @@ const corsOptions = {
   origin: "http://localhost:3001",
 };
 app.use(cors(corsOptions));
-
-//Routes Go Below:
-app.use("/api/customers", customerRoutes);
-app.use("/api/orders", orderRoutes);
 
 app.use((req: Request, res: Response, next: NextFunction) => {
   res.status(404).end();
@@ -45,3 +40,5 @@ server.on("listening", () => {
 
   console.log(`Listening on port:: http://localhost:${port}/`);
 });
+
+orderConsumer();

@@ -4,21 +4,23 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
-    "start": "node dist/server.js",
-    "dev": "concurrently \"tsc -w\" \"nodemon dist/index.js\""
+    "build": "tsc -w",
+    "start": "nodemon dist/server.js",
+    "dev": "concurrently \"tsc -w\" \"nodemon dist/server.js\""
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "amqplib": "^0.10.3",
     "bcrypt": "^5.1.0",
+    "concurrently": "^7.6.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
     "morgan": "^1.10.0",
     "mysql2": "^3.0.0",
+    "nodemon": "^2.0.20",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^6.28.0",
     "sequelize-typescript": "^2.1.5"
